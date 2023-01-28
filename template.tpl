@@ -14,7 +14,9 @@ ___INFO___
   "version": 1,
   "securityGroups": [],
   "displayName": "Match Regex",
-  "categories": ["UTILITY"],
+  "categories": [
+    "UTILITY"
+  ],
   "description": "Search a string for a match against a regular expression, and return the first complete match or one of its related capturing groups.",
   "containerContexts": [
     "SERVER"
@@ -72,6 +74,10 @@ ___SANDBOXED_JS_FOR_SERVER___
 let string = data.string;
 let regex = data.regex;
 let index = data.index;
+
+if (string.match(regex) === null) {
+	return undefined;
+}
 
 return string.match(regex)[index];
 
